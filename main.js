@@ -1,10 +1,19 @@
 var storeApp = angular.module('AppStore', []);
 
-storeApp.directive('item', function($scope, element) {
+storeApp.directive('itemprod', function($scope, element) {
     return {
         restrice: "E",
-        template: "<div><h3 ng-click=''>{{name}}</h3>" +
-            "<div ng-show=''>{{description}}</div></div>"
+        trasclude: true,
+        scope: {},
+        template: "<div ng-trasclude ng-click='clickFunc()'></div>",
+        link: function(scope, element) {
+            scope.isClicked = false;
+        },
+        controller: function($scope, element) {
+            $scope.clickFunc = function() {
+                $scope.isClicked = !$scope.isClicked;
+            }
+        }
     };
 });
 
