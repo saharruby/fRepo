@@ -3,23 +3,25 @@
   <title>Angular Store Application</title>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
   <script type="text/javascript" src="main.js"></script>
+  <script type="text/javascript" src="services.js"></script>
 </head>
 <body ng-app="AppStore">
 
+<input type="text" ng-model="searchFilter">
 <table ng-controller="dataCtrl">
   <caption>All Prodacts</caption>
   <thead>
     <tr>
       <th>Name</th>
       <th>Price</th>
-      <th>Description</th>
+      <th>Image</th>
     </tr>
   </thead>
-  <tbody ng-repet="item in storeData">
-    <tr>
-      <td>{{item.name}}</td>
-      <td>{{item.price}}</td>
-      <td>{{item.description}}</td>
+  <tbody>
+    <tr ng-repeat="item in storeData.allItems | filter:searchFilter">
+      <td>{{item.name | uppercase}}</td>
+      <td>{{item.price | uppercase}}</td>
+      <td>{{item.description | lowercase}}</td>
     </tr>
   </tbody>
 </table>
