@@ -1,0 +1,28 @@
+<div ng-controller="ArticleCtrl" class="container">
+  <div class="row" style="height: 240px;background-image:url('{{article.imageUrl}}');">
+          <header class="twelve columns text-right" style="background-color: rgba(110, 110, 100, 0.6)"><!--  style=" height: 100%" -->
+                <h5 style="floet:right;color:white;font-weight:bold;">{{article.title}}</h5>
+            </header>
+   </div>
+  <div class="row">
+          <header class="twelve columns text-right">
+                <h3 style="floet:right;">{{article.subTitle}}</h3>
+            </header>
+   </div>
+<div class="row">
+          <div class="twelve columns text-right">
+                <p ng-bind-html="trustedHtml" style="floet:right;"></p>
+            </div>
+   </div>
+   <!-- color: rgba(255,0,0,1) {{article.content}} -->
+    <!-- <div ng-repeat="a in ac.art" class="row">
+            <a href="#" ng-click="goToArticle(a.articleId)">
+            <div class="small-4 columns">  --> <!-- hide-on-phones -->  <!-- <aside> -->
+                    <!-- <img  class="th [radius]" ng-src="{{a.imageUrl}}" >
+            </div>
+            <div class="main small-8 columns text-justify">
+                 <p>{{a.title}}</p>
+            </div>
+            </a>
+    </div> -->
+</div>
