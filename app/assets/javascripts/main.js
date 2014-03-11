@@ -5,7 +5,8 @@ var autoModuleApp = angular.module("main", [
     'ngRoute',
     'ngResource',
     'autoServices',
-    'autoControllers'
+    'autoControllers',
+    'autoDirectives'
 ]);
 
 autoModuleApp.config(['$routeProvider',

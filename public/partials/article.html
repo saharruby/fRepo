@@ -11,18 +11,8 @@
    </div>
 <div class="row">
           <div class="twelve columns text-right">
-                <p ng-bind-html="trustedHtml" style="floet:right;"></p>
+                <!-- <p ng-bind-html="trustedHtml" style="floet:right;"></p> -->
+                <articlecontentparser trustedhtml="{{article.content}}" style="floet:right;"></articlecontentparser>
             </div>
    </div>
-   <!-- color: rgba(255,0,0,1) {{article.content}} -->
-    <!-- <div ng-repeat="a in ac.art" class="row">
-            <a href="#" ng-click="goToArticle(a.articleId)">
-            <div class="small-4 columns">  --> <!-- hide-on-phones -->  <!-- <aside> -->
-                    <!-- <img  class="th [radius]" ng-src="{{a.imageUrl}}" >
-            </div>
-            <div class="main small-8 columns text-justify">
-                 <p>{{a.title}}</p>
-            </div>
-            </a>
-    </div> -->
 </div>
