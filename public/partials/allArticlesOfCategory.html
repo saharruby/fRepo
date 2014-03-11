@@ -1,10 +1,11 @@
 <div ng-controller="ArticlesCategoryCtrl" class="container">
   <a href="#articles/{{firstArticle.articleId}}" >
-  <div class="row" style="background-image:url('{{firstArticle.imageUrl}}');height: 240px;background-repeat: no-repeat;background-position: 95% 0;background-size: auto 95%;">
-      <header class="twelve columns text-right" style="margin-right: 10px;background-color: rgba(110, 110, 100, 0.6)">
-             <h5 style="floet:right;color:white;font-weight:bold;">{{firstArticle.title}}</h5>
-      </header>
-  </div>
+    <div class="row" >
+          <header class="twelve columns text-right" style="margin-right: 10px;background-color: rgba(110, 110, 100, 0.5);position:absolute">
+                <h5 style="floet:right;color:white;font-weight:bold;">{{firstArticle.title}}</h5>
+          </header>
+          <img src="{{firstArticle.imageUrl}}" style="height: 240px;width:100%">
+   </div>
 </a>
   <div  >
     <div ng-repeat="a in articles" class="row">

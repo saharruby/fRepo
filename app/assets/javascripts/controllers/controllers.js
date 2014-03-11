@@ -4,8 +4,8 @@
 
 var autoControllers = angular.module('autoControllers', []);
 
-autoControllers.controller('ArticleListCtrl', ['$scope', '$http', // 'AutoService',
-    function($scope, $http) { //, AutoService) {
+autoControllers.controller('ArticleListCtrl', ['$scope', '$http', 'NavServices', // 'AutoService',
+    function($scope, $http, NavServices) { //, AutoService) {
         //$scope.allArticles = AutoService.get();
         $scope.articles = {};
         var dicTypes = {
@@ -33,7 +33,7 @@ autoControllers.controller('ArticleListCtrl', ['$scope', '$http', // 'AutoServic
             angular.forEach(data, function(item, index) {
                 $scope.articles[item.categoryId].art.push(item);
             });
-            // console.log(data);
+            //NavServices.broadcastNavIdMsg('2');
         });
     }
 ]);
@@ -70,28 +70,43 @@ autoControllers.controller('ArticlesCategoryCtrl', ['$scope', '$http', '$routePa
     }
 ]);
 
-autoControllers.controller('NavCtrl', ['$scope',
-    function($scope) {
+autoControllers.controller('NavCtrl', ['$scope', 'NavServices',
+    function($scope, NavServices) {
+        // $scope.$on('handelNavIdChanged', function() {
+        //     $scope.currentNav = NavServices.navIdMsg;
+
+        //     angular.forEach($scope.navs, function(nav, i) {
+        //         if (nav.navId == $scope.currentNav) {
+        //             nav.route = '#';
+        //         }
+        //     });
+        // });
+
         $scope.navs = [{
             name: 'קטלוג הרכב',
             img: '......',
-            route: '#'
+            route: '#',
+            navId: '1'
         }, {
             name: 'כתבות',
             img: '......',
-            route: 'articles'
+            route: 'articles',
+            navId: '2'
         }, {
             name: 'מדריך קניה',
             img: '......',
-            route: '#'
+            route: '#',
+            navId: '3'
         }, {
             name: 'יייעוץ חינם לקניית רכב',
             img: '......',
-            route: '#'
+            route: '#',
+            navId: '4'
         }, {
             name: 'מועדפים',
             img: '......',
-            route: '#'
+            route: '#',
+            navId: '5'
         }];
     }
 ]);
