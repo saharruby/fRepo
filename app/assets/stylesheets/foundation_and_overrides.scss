@@ -42,7 +42,7 @@ $include-html-global-classes: $include-html-classes;
 // We use these to control various global styles
 // $body-bg: #fff;
 // $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -63,8 +63,8 @@ $primary-color: #f08CBA;
 // $info-color: #a0d3e8;
 
 // We use these to make sure border radius matches unless we want it different.
-$global-radius: 3px;
-// $global-rounded: 1000px;
+$global-radius: 15px;
+$global-rounded: 10px;
 
 // We use these to control inset shadow shiny edges and depressions.
 // $shiny-edge-size: 0 1px 0;
@@ -313,42 +313,42 @@ $global-radius: 3px;
 // BUTTONS
 //
 
-// $include-html-button-classes: $include-html-classes;
+$include-html-button-classes: $include-html-classes;
 
 // We use these to build padding for buttons.
-// $button-tny: rem-calc(10);
-// $button-sml: rem-calc(14);
-// $button-med: rem-calc(16);
-// $button-lrg: rem-calc(18);
+$button-tny: rem-calc(10);
+$button-sml: rem-calc(14);
+$button-med: rem-calc(16);
+$button-lrg: rem-calc(18);
 
 // We use this to control the display property.
-// $button-display: inline-block;
-// $button-margin-bottom: rem-calc(20);
+$button-display: inline-block;
+$button-margin-bottom: rem-calc(20);
 
 // We use these to control button text styles.
-// $button-font-family: $body-font-family;
-// $button-font-color: #fff;
-// $button-font-color-alt: #333;
-// $button-font-tny: rem-calc(11);
-// $button-font-sml: rem-calc(13);
-// $button-font-med: rem-calc(16);
-// $button-font-lrg: rem-calc(20);
-// $button-font-weight: normal;
-// $button-font-align: center;
+$button-font-family: $body-font-family;
+$button-font-color: #fff;
+$button-font-color-alt: #333;
+$button-font-tny: rem-calc(11);
+$button-font-sml: rem-calc(13);
+$button-font-med: rem-calc(16);
+$button-font-lrg: rem-calc(20);
+$button-font-weight: normal;
+$button-font-align: center;
 
 // We use these to control various hover effects.
-// $button-function-factor: 5%;
+$button-function-factor: 5%;
 
 // We use these to control button border styles.
-// $button-border-width: 1px;
-// $button-border-style: solid;
+$button-border-width: 1px;
+$button-border-style: solid;
 
 // We use this to set the default radius used throughout the core.
-// $button-radius: $global-radius;
-// $button-round: $global-rounded;
+$button-radius: $global-radius;
+$button-round: $global-rounded;
 
 // We use this to set default opacity for disabled buttons.
-// $button-disabled-opacity: 0.7;
+$button-disabled-opacity: 0.6;
 
 // Button Groups
 

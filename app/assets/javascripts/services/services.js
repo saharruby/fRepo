@@ -24,8 +24,51 @@ autoServices.factory('NavServices', ['$rootScope',
     }
 ]);
 
-autoServices.factory('ArticleServices', ['$resource',
-    function($resource) {
-        return $resource('articles.json');
+autoServices.factory('ManufacturersServices', ['$http',
+    function($http) {
+        var resourcemf = {};
+
+        resourcemf.getAllManufacturers = function() {
+            return $http.get('manufacturers.json', {
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            });
+        };
+
+        return resourcemf;
+    }
+]);
+
+
+autoServices.factory('ArticlesServices', ['$http',
+    function($http) {
+        var resource = {};
+
+        resource.getAllArticles = function() {
+            return $http.get('articles.json', {
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            });
+        };
+
+        resource.getAllArticlesByCatregoryId = function(categoryId) {
+            return $http.get('articles.json?category=' + categoryId, {
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            });
+        };
+
+        resource.getArticleById = function(articleId) {
+            return $http.get('articles/' + articleId + '.json', {
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            });
+        };
+
+        return resource;
     }
 ]);

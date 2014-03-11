@@ -4,9 +4,8 @@
 
 var autoControllers = angular.module('autoControllers', []);
 
-autoControllers.controller('ArticleListCtrl', ['$scope', '$http', 'NavServices', // 'AutoService',
-    function($scope, $http, NavServices) { //, AutoService) {
-        //$scope.allArticles = AutoService.get();
+autoControllers.controller('ArticleListCtrl', ['$scope', 'NavServices', 'ArticlesServices',
+    function($scope, NavServices, ArticlesServices) {
         $scope.articles = {};
         var dicTypes = {
             "1": 'חדשות הרכב',
@@ -24,50 +23,52 @@ autoControllers.controller('ArticleListCtrl', ['$scope', '$http', 'NavServices',
             };
         });
 
-        var url = 'articles.json';
-        $http.get(url, {
-            headers: {
-                'Content-type': 'application/json'
-            }
-        }).success(function(data) {
+        ArticlesServices.getAllArticles().success(function(data) {
             angular.forEach(data, function(item, index) {
                 $scope.articles[item.categoryId].art.push(item);
             });
-
+            //console.log(data);
             //NavServices.broadcastNavIdMsg('2');
         });
     }
 ]);
 
-autoControllers.controller('ArticleCtrl', ['$scope', '$http', '$routeParams', '$sce',
-    function($scope, $http, $routeParams, $sce) {
+autoControllers.controller('ArticleCtrl', ['$scope', '$routeParams', '$sce', 'ArticlesServices',
+    function($scope, $routeParams, $sce, ArticlesServices) {
         $scope.article_id = $routeParams.articleId;
-        var url = 'articles/' + $scope.article_id + '.json';
-        $http.get(url, {
-            headers: {
-                'Content-type': 'application/json'
-            }
-        }).success(function(data) {
+
+        ArticlesServices.getArticleById($scope.article_id).success(function(data) {
             $scope.article = data[0];
+            console.log($scope.article);
+            //console.log($scope.article.content);
         });
     }
 ]);
 
-autoControllers.controller('ArticlesCategoryCtrl', ['$scope', '$http', '$routeParams',
-    function($scope, $http, $routeParams) {
+autoControllers.controller('ArticlesCategoryCtrl', ['$scope', '$routeParams', 'ArticlesServices',
+    function($scope, $routeParams, ArticlesServices) {
         $scope.category_id = $routeParams.categoryId;
         $scope.firstArticle = {};
 
-        var url = 'articles.json?category=' + $scope.category_id;
-        $http.get(url, {
-            headers: {
-                'Content-type': 'application/json'
-            }
-        }).success(function(data) {
+        ArticlesServices.getAllArticlesByCatregoryId($scope.category_id).success(function(data) {
             $scope.firstArticle = data[0];
             $scope.articles = data.slice(1, data.length);
+        });
+    }
+]);
+
+autoControllers.controller('ManufacturersCtrl', ['$scope', 'ManufacturersServices',
+    function($scope, ManufacturersServices) {
+        ManufacturersServices.getAllManufacturers().success(function(data) {
+            $scope.manufacturers = data;
             console.log(data);
         });
+    }
+]);
+
+autoControllers.controller('CatalogCtrl', ['$scope',
+    function($scope) {
+        console.log('From Catalog CTRL');
     }
 ]);
 
@@ -79,7 +80,7 @@ autoControllers.controller('NavCtrl', ['$scope', 'NavServices',
         //     angular.forEach($scope.navs, function(nav, i) {
         //         if (nav.navId == $scope.currentNav) {
         //             nav.route = '#';
-        //             $scope.curClass = "right-off-canvas-toggle";
+        //             // $scope.curClass = "right-off-canvas-toggle";
         //         }
         //     });
         // });
@@ -87,12 +88,12 @@ autoControllers.controller('NavCtrl', ['$scope', 'NavServices',
         $scope.navs = [{
             name: 'קטלוג הרכב',
             img: '......',
-            route: '#',
+            route: '#/articles/carcatalog',
             navId: '1'
         }, {
             name: 'כתבות',
             img: '......',
-            route: 'articles',
+            route: '#/articles',
             navId: '2'
         }, {
             name: 'מדריך קניה',
