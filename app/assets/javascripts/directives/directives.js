@@ -17,6 +17,8 @@ autoDirectives.directive('articlecontentparser', ['$sce',
                     var e = newContent.indexOf('</iframe>');
                     newContent = newContent.substring(0, s) + iframe.prop('outerHTML') + newContent.substring(e + 9);
 
+                    // TODO: remove links & iframe num2
+
                     //var textArr = newContent.split('<iframe');
                     // var tmpText = textArr[1] + "";
                     // tmpText = tmpText.replace(/width="\d+"/, "width='100%'");

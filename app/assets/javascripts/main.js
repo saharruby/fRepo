@@ -14,6 +14,12 @@ autoModuleApp.config(['$routeProvider',
         $routeProvider.when('/articles', {
             templateUrl: 'partials/allArticles.html',
             controller: 'ArticleListCtrl'
+        }).when('/articles/carcatalog', {
+            templateUrl: 'partials/catalog.html',
+            controller: 'CatalogCtrl'
+        }).when('/articles/carcatalog/manufacturers', {
+            templateUrl: 'partials/manufacturers.html',
+            controller: 'ManufacturersCtrl'
         }).when('/articles/:articleId', {
             templateUrl: 'partials/article.html',
             controller: 'ArticleCtrl'
