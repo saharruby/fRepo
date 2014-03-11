@@ -22,6 +22,8 @@ autoDirectives.directive('articlecontentparser', ['$sce',
                     // tmpText = tmpText.replace(/width="\d+"/, "width='100%'");
                     // newContent = textArr[0] + "<iframe " + tmpText;
 
+                    console.log("HELLO WORLD");
+
                     element.html($sce.trustAsHtml(newContent));
                 });
             }
