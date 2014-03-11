@@ -1,8 +1,9 @@
 <div ng-controller="ArticleCtrl" class="container">
-  <div class="row" style="height: 240px;background-image:url('{{article.imageUrl}}');background-repeat: no-repeat;background-position: 98% 0;background-size: auto 100%;">
-          <header class="twelve columns text-right" style="margin-right: 10px;background-color: rgba(110, 110, 100, 0.6)">
+ <div class="row" >
+          <header class="twelve columns text-right" style="margin-right: 10px;background-color: rgba(110, 110, 100, 0.5);position:absolute">
                 <h5 style="floet:right;color:white;font-weight:bold;">{{article.title}}</h5>
-            </header>
+          </header>
+          <img src="{{article.imageUrl}}" style="height: 240px;width:100%">
    </div>
   <div class="row">
           <header class="twelve columns text-right">
@@ -10,8 +11,8 @@
             </header>
    </div>
 <div class="row">
-          <div class="twelve columns text-right">
-                <articlecontentparser trustedhtml="{{article.content}}" style="floet:right;"></articlecontentparser>
-            </div>
-   </div>
+      <div class="twelve columns text-right">
+            <articlecontentparser trustedhtml="{{article.content}}" style="floet:right;"></articlecontentparser>
+      </div>
+</div>
 </div>
