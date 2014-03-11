@@ -4,12 +4,12 @@
   <div class="inner-wrap">
    <div class="fixed">
    <nav class="tab-bar">
-      <section class="left-small">
+<!--       <section class="left-small">
         <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
-      </section>
+      </section> -->
 
       <section class="middle tab-bar-section">
-        <h1 class="title">Foundation</h1>
+        <h1 class="title">Auto Magazine</h1>
       </section>
 
       <section class="right-small">
@@ -18,17 +18,17 @@
     </nav>
 </div>
 
-    <aside class="left-off-canvas-menu" style="width:100%">
+<!--     <aside class="left-off-canvas-menu" style="width:100%">
       <ul class="off-canvas-list">
         <li><label>Foundation</label></li>
         <li><a href="#">The Psychohistorians</a></li>
       </ul>
-    </aside>
+    </aside> -->
 
-    <aside class="right-off-canvas-menu">
+    <aside class="right-off-canvas-menu text-right" ng-controller="NavCtrl">
       <ul class="off-canvas-list">
-        <li><label>Users</label></li>
-        <li><a href="#">Hari Seldon</a></li>
+        <li><label>Menu</label></li>
+        <li ng-repeat="nav in navs"><a href="#">{{nav.name}}</a></li>
       </ul>
     </aside>
 

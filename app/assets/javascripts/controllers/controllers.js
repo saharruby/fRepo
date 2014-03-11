@@ -61,14 +61,6 @@ autoControllers.controller('ArticleCtrl', ['$scope', '$http', '$routeParams', '$
             }
         }).success(function(data) {
             $scope.article = data[0];
-
-            // var textArr = $scope.article.content.split('<iframe');
-            // console.log(textArr[0] + " :==: " + textArr[1]);
-
-            //textArr[1].replace('width="')
-
-            //$scope.trustedHtml = $sce.trustAsHtml($scope.article.content);
-            console.log($scope.article);
         });
     }
 ]);
