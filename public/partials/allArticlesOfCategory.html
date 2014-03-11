@@ -1,0 +1,21 @@
+<div ng-controller="ArticlesCategoryCtrl" class="container">
+  <a href="#articles/{{firstArticle.articleId}}" >
+  <div class="row" style="background-image:url('{{firstArticle.imageUrl}}');height: 240px;background-repeat: no-repeat;position: relative;background-position: 90% 0;background-size: auto 90%;">
+      <header class="twelve columns text-right" style="background-color: rgba(110, 110, 100, 0.6)">
+             <h5 style="floet:right;color:white;font-weight:bold;">{{firstArticle.title}}</h5>
+      </header>
+  </div>
+</a>
+  <div  >
+    <div ng-repeat="a in articles" class="row">
+            <a href="#articles/{{a.articleId}}" >
+            <div class="small-4 columns">
+                    <img  class="th [radius]" ng-src="{{a.imageUrl}}" >
+            </div>
+            <div class="main small-8 columns text-justify">
+                <p style="font-weight:bold;">{{a.title}}</p>
+            </div>
+            </a>
+    </div>
+</div>
+</div>

@@ -24,8 +24,6 @@ autoControllers.controller('ArticleListCtrl', ['$scope', '$http', // 'AutoServic
             };
         });
 
-        //console.log($scope.articles);
-
         var url = 'articles.json';
         $http.get(url, {
             headers: {
@@ -35,19 +33,8 @@ autoControllers.controller('ArticleListCtrl', ['$scope', '$http', // 'AutoServic
             angular.forEach(data, function(item, index) {
                 $scope.articles[item.categoryId].art.push(item);
             });
+            // console.log(data);
         });
-
-        // $scope.goToArticle = function(id) {
-        //     if (id) {
-        //         $http.get('articles/' + id + '.json', {
-        //             headers: {
-        //                 'Content-type': 'application/json'
-        //             }
-        //         }).success(function(data) {
-        //             console.log(data);
-        //         });
-        //     }
-        // };
     }
 ]);
 
@@ -65,16 +52,54 @@ autoControllers.controller('ArticleCtrl', ['$scope', '$http', '$routeParams', '$
     }
 ]);
 
-autoControllers.controller('NavCtrl', ['$scope', '$http',
-    function($scope, $http) {
-        $scope.navs = [];
-        var url = 'home.json';
+autoControllers.controller('ArticlesCategoryCtrl', ['$scope', '$http', '$routeParams',
+    function($scope, $http, $routeParams) {
+        $scope.category_id = $routeParams.categoryId;
+        $scope.firstArticle = {};
+
+        var url = 'articles.json?category=' + $scope.category_id;
         $http.get(url, {
             headers: {
                 'Content-type': 'application/json'
             }
         }).success(function(data) {
-            $scope.navs = data;
+            $scope.firstArticle = data[0];
+            $scope.articles = data.slice(1, data.length);
+            console.log(data);
         });
+    }
+]);
+
+autoControllers.controller('NavCtrl', ['$scope', //'$http',
+    function($scope) { //, $http) {
+        $scope.navs = [{
+            name: 'קטלוג הרכב',
+            img: '......',
+            route: '.......'
+        }, {
+            name: 'כתבות',
+            img: '......',
+            route: '.......'
+        }, {
+            name: 'מדריך קניה',
+            img: '......',
+            route: '.......'
+        }, {
+            name: 'יייעוץ חינם לקניית רכב',
+            img: '......',
+            route: '.......'
+        }, {
+            name: 'מועדפים',
+            img: '......',
+            route: '.......'
+        }];
+        // var url = 'home.json';
+        // $http.get(url, {
+        //     headers: {
+        //         'Content-type': 'application/json'
+        //     }
+        // }).success(function(data) {
+        //     $scope.navs = data;
+        // });
     }
 ]);

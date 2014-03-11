@@ -1,12 +1,12 @@
 <div ng-controller="ArticleCtrl" class="container">
-  <div class="row" style="height: 240px;background-image:url('{{article.imageUrl}}');">
-          <header class="twelve columns text-right" style="background-color: rgba(110, 110, 100, 0.6)"><!--  style=" height: 100%" -->
+  <div class="row" style="height: 240px;background-image:url('{{article.imageUrl}}');background-repeat: no-repeat">
+          <header class="twelve columns text-right" style="background-color: rgba(110, 110, 100, 0.6)">
                 <h5 style="floet:right;color:white;font-weight:bold;">{{article.title}}</h5>
             </header>
    </div>
   <div class="row">
           <header class="twelve columns text-right">
-                <h3 style="floet:right;">{{article.subTitle}}</h3>
+                <h3 style="floet:right;font-weight:bold;">{{article.subTitle}}</h3>
             </header>
    </div>
 <div class="row">
