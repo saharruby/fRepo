@@ -28,7 +28,7 @@
     <aside class="right-off-canvas-menu text-right" ng-controller="NavCtrl">
       <ul class="off-canvas-list">
         <li><label>Menu</label></li>
-        <li ng-repeat="nav in navs"><a href="#">{{nav.name}}</a></li>
+        <li ng-repeat="nav in navs"><a href="{{nav.route}}">{{nav.name}}</a></li>
       </ul>
     </aside>
 
