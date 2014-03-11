@@ -70,36 +70,28 @@ autoControllers.controller('ArticlesCategoryCtrl', ['$scope', '$http', '$routePa
     }
 ]);
 
-autoControllers.controller('NavCtrl', ['$scope', //'$http',
-    function($scope) { //, $http) {
+autoControllers.controller('NavCtrl', ['$scope',
+    function($scope) {
         $scope.navs = [{
             name: 'קטלוג הרכב',
             img: '......',
-            route: '.......'
+            route: '#'
         }, {
             name: 'כתבות',
             img: '......',
-            route: '.......'
+            route: 'articles'
         }, {
             name: 'מדריך קניה',
             img: '......',
-            route: '.......'
+            route: '#'
         }, {
             name: 'יייעוץ חינם לקניית רכב',
             img: '......',
-            route: '.......'
+            route: '#'
         }, {
             name: 'מועדפים',
             img: '......',
-            route: '.......'
+            route: '#'
         }];
-        // var url = 'home.json';
-        // $http.get(url, {
-        //     headers: {
-        //         'Content-type': 'application/json'
-        //     }
-        // }).success(function(data) {
-        //     $scope.navs = data;
-        // });
     }
 ]);
