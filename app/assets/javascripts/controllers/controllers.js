@@ -33,6 +33,7 @@ autoControllers.controller('ArticleListCtrl', ['$scope', '$http', 'NavServices',
             angular.forEach(data, function(item, index) {
                 $scope.articles[item.categoryId].art.push(item);
             });
+
             //NavServices.broadcastNavIdMsg('2');
         });
     }
@@ -78,6 +79,7 @@ autoControllers.controller('NavCtrl', ['$scope', 'NavServices',
         //     angular.forEach($scope.navs, function(nav, i) {
         //         if (nav.navId == $scope.currentNav) {
         //             nav.route = '#';
+        //             $scope.curClass = "right-off-canvas-toggle";
         //         }
         //     });
         // });
