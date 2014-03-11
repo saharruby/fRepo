@@ -17,6 +17,9 @@ autoModuleApp.config(['$routeProvider',
         }).when('/articles/:articleId', {
             templateUrl: 'partials/article.html',
             controller: 'ArticleCtrl'
+        }).when('/articles/category/:categoryId', {
+            templateUrl: 'partials/allArticlesOfCategory.html',
+            controller: 'ArticlesCategoryCtrl'
         }).otherwise({
             redirectTo: '/articles'
         });
