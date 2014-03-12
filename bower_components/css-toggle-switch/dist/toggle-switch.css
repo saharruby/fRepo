@@ -1,10 +1,3 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-.sm-width{
-  width: 150px;
-}
-
 /*
  * CSS TOGGLE SWITCHES
  * Unlicense
@@ -31,32 +24,32 @@
  */
 @media only screen {
   /* Checkbox switch
-   */
+	 */
   /* Radio switch
-   */
+	 */
   /* Standalone Themes */
   /* Candy Theme
-   * Based on the "Sort Switches / Toggles (PSD)" by Ormal Clarck
-   * http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/
-   */
+	 * Based on the "Sort Switches / Toggles (PSD)" by Ormal Clarck
+	 * http://www.premiumpixels.com/freebies/sort-switches-toggles-psd/
+	 */
   /* Android Theme
-   */
+	 */
   /* iOS Theme
-   */
+	 */
   .switch-light {
     display: block;
-    height: 40px;
+    height: 30px;
     /* Outline the toggles when the inputs are focused
-   */
+	 */
     position: relative;
     overflow: visible;
     padding: 0;
     margin-left: 100px;
     /* Position the label over all the elements, except the slide-button (<a>)
-   * Clicking anywhere on the label will change the switch-state
-   */
+	 * Clicking anywhere on the label will change the switch-state
+	 */
     /* Don't hide the input from screen-readers and keyboard access
-   */ }
+	 */ }
     .switch-light * {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
@@ -111,12 +104,12 @@
       padding: 0; }
   .switch-toggle {
     display: block;
-    height: 40px;
+    height: 30px;
     /* Outline the toggles when the inputs are focused
-   */
+	 */
     position: relative;
     /* For callout panels in foundation
-   */
+	 */
     padding: 0 !important;
     /* Generate styles for the multiple states */ }
     .switch-toggle * {
@@ -216,7 +209,7 @@
     color: white;
     box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0;
     /* Selected ON switch-light
-     */ }
+		 */ }
     .switch-android label {
       color: white; }
     .switch-android > span span {
@@ -315,34 +308,3 @@
 
   to {
     -webkit-transform: translate3d(0, 0, 0); } }
-
-// input[type="radio"].toggle:checked + label {
-//   background-image: linear-gradient(to top,#969696,#727272);
-//   box-shadow: inset 0 1px 6px rgba(41, 41, 41, 0.2),
-//                     0 1px 2px rgba(0, 0, 0, 0.05);
-//   cursor: default;
-//   color: #E6E6E6;
-//   border-color: transparent;
-//   text-shadow: 0 1px 1px rgba(40, 40, 40, 0.75);
-// }
-
-// input[type="radio"].toggle + label {
-//   width: 3em;
-// }
-
-// input[type="radio"].toggle:checked + label.btn:hover {
-//   background-color: inherit;
-//   background-position: 0 0;
-//   transition: none;
-// }
-
-// input[type="radio"].toggle-left + label {
-//   border-right: 0;
-//   border-top-right-radius: 0;
-//   border-bottom-right-radius: 0;
-// }
-
-// input[type="radio"].toggle-right + label {
-//   border-top-left-radius: 0;
-//   border-bottom-left-radius: 0;
-// }
