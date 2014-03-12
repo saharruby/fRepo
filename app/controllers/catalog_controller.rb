@@ -4,7 +4,7 @@ class CatalogController < ApplicationController
 
   def index
     respond_with Net::HTTP.get URI.parse(HOST + "/manufacturers") unless params[:id]
-    respond_with Net::HTTP.get URI.parse(HOST + "/manufacturers/" + params[:id]) if params[:id]
+    respond_with Net::HTTP.get URI.parse(HOST + "/manufacturers/" + params[:id] + "/models") if params[:id]
   end
 
   # def show

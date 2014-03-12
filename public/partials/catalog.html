@@ -1,26 +1,3 @@
 <div ng-controller="CatalogCtrl" class="container">
-  <div class="row" >
-    <div class="twelve columns text-center">
-    <!-- Radius Classes -->
-    <a href="#/articles/carcatalog/manufacturers" class="button [radius round]" style="width:100%">
-        <span style="float:right">בחר יצרן</span>
-        <span style="float:left"><  כל היצרנים</span>
-    </a>
-  </div>
- </div>
- <div class="row" >
-  <div class="twelve columns text-center">
-    <!-- Disabled Class -->
-    <a href="#" class="button  [radius round] disabled" style="width:100%">
-        <span style="float:right">בחר דגם</span>
-        <span style="float:left"><  כל הדגמים</span>
-    </a>
-  </div>
- </div>
-<div class="row" >
-  <div class="twelve columns text-center">
-    <!-- Disabled Class -->
-    <a href="#" class="button  [alert round] disabled" style="width:100%">חפש</a>
-  </div>
- </div>
+ <catalog manufactureselected="{{manufactureId}}" modelselected="{{modelId}}"></catalog>
 </div>

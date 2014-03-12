@@ -57,17 +57,67 @@ autoControllers.controller('ArticlesCategoryCtrl', ['$scope', '$routeParams', 'A
     }
 ]);
 
-autoControllers.controller('ManufacturersCtrl', ['$scope', 'ManufacturersServices',
-    function($scope, ManufacturersServices) {
+autoControllers.controller('ManufacturersCtrl', ['$scope', 'ManufacturersServices', 'CatalogServices',
+    function($scope, ManufacturersServices, CatalogServices) {
+        $scope.manufacturers = {};
+
         ManufacturersServices.getAllManufacturers().success(function(data) {
-            $scope.manufacturers = data;
-            console.log(data);
+            angular.forEach(data, function(item, index) {
+                if (!$scope.manufacturers[item.name.charAt(0)]) {
+                    $scope.manufacturers[item.name.charAt(0)] = {};
+                    $scope.manufacturers[item.name.charAt(0)].key = '';
+                    $scope.manufacturers[item.name.charAt(0)].collection = [];
+                }
+                $scope.manufacturers[item.name.charAt(0)].key = item.name.charAt(0);
+                $scope.manufacturers[item.name.charAt(0)].collection.push(item);
+            });
         });
+
+        $scope.onSelectMF = function(id) {
+            CatalogServices.setManufacturerId(id);
+        };
     }
 ]);
 
-autoControllers.controller('CatalogCtrl', ['$scope',
-    function($scope) {
+autoControllers.controller('ModelsCtrl', ['$scope', 'ManufacturersServices', 'CatalogServices',
+    function($scope, ManufacturersServices, CatalogServices) {
+        $scope.manufacturerId = CatalogServices.getManufacturerId();
+        $scope.models = {};
+        $scope.newOrUsed = 'new';
+
+        ManufacturersServices.getAllModelsByManufacturerId($scope.manufacturerId).success(function(data) {
+            console.log(data);
+            angular.forEach(data, function(item, index) {
+                if (!$scope.models[item.name.charAt(0)]) {
+                    $scope.models[item.name.charAt(0)] = {};
+                    $scope.models[item.name.charAt(0)].key = '';
+                    $scope.models[item.name.charAt(0)].collection = [];
+                }
+                $scope.models[item.name.charAt(0)].key = item.name.charAt(0);
+                $scope.models[item.name.charAt(0)].collection.push(item);
+            });
+        });
+
+        $scope.onSelectM = function(id) {
+            CatalogServices.setModelId(id);
+            CatalogServices.setNewOrUsed($scope.newOrUsed);
+        };
+    }
+]);
+
+autoControllers.controller('CatalogCtrl', ['$scope', 'ManufacturersServices', 'CatalogServices',
+    function($scope, ManufacturersServices, CatalogServices) {
+        $scope.manufactureId = 0;
+        $scope.modelId = 0;
+
+        $scope.$watch(CatalogServices.manufactureId, function(newData) {
+            $scope.manufactureId = CatalogServices.getManufacturerId();
+        });
+
+        $scope.$watch(CatalogServices.modelId, function(newData) {
+            $scope.modelId = CatalogServices.getModelId();
+        });
+
         console.log('From Catalog CTRL');
     }
 ]);

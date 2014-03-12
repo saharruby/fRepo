@@ -30,3 +30,47 @@ autoDirectives.directive('articlecontentparser', ['$sce',
         };
     }
 ]);
+
+autoDirectives.directive('catalog',
+    function() {
+        return {
+            restrict: 'E',
+            scope: {
+                manufactureselected: '@',
+                modelselected: '@'
+            },
+            link: function(scope, element) {
+                scope.$watch('manufactureselected', function(value) {
+                    scope.modelflag = (value == 0 ? true : false);
+                    console.log("watch : " + value);
+                });
+
+                scope.$watch('modelselected', function(value) {
+                    scope.continueflag = (value == 0 ? true : false);
+                    console.log("watch : " + value);
+                });
+            },
+            template: '<div class="row" >' +
+                '<div class="twelve columns text-center">' +
+                '<a href="#/articles/carcatalog/manufacturers" class="button [radius round]" style="width:100%">' +
+                '<span style="float:right">בחר יצרן</span>' +
+                '<span style="float:left"><  כל היצרנים</span>' +
+                '</a>' +
+                '</div>' +
+                '</div>' +
+                '<div class="row" >' +
+                '<div class="twelve columns text-center">' +
+                '<a href="#/articles/carcatalog/models?isSelected" class="button  [radius round]" ng-disabled="modelflag"  style="width:100%">' +
+                '<span style="float:right">בחר דגם</span>' +
+                '<span style="float:left"><  כל הדגמים</span>' +
+                '</a>' +
+                '</div>' +
+                '</div>' +
+                '<div class="row" >' +
+                '<div class="twelve columns text-center">' +
+                '<a href="#/articles/carcatalog/manufacturer/modeldetailed" class="button  [alert round]" ng-disabled="continueflag" style="width:100%">חפש</a>' +
+                '</div>' +
+                '</div>'
+        };
+    }
+);

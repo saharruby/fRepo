@@ -1,35 +1,17 @@
 <div ng-controller="ManufacturersCtrl" class="container">
   <div ng-repeat="mf in manufacturers" >
-  <div class="row" style="background-color: rgb(163, 163, 184);">
-    <header class="twelve columns text-right">
-      <h5 style="floet:right;">{{mf.name}}</h5> <!-- {{mf.letter}}</h5> -->
-    </header>
+    <div class="row" style="background-color: rgb(163, 163, 184);box-shadow: 1px 2px 0.5px #888888;">
+      <header class="twelve columns text-right">
+        <h5 style="font-weight:bold;font-size:x-large;">{{mf.key}}</h5>
+      </header>
+    </div>
+
+    <div ng-repeat="col in mf.collection" class="row">
+      <a href="#articles/carcatalog?isSelected" ng-click="onSelectMF(col.id)">
+        <div class="main small-12 columns text-right" style="border-bottom-color:light-black;border-bottom-width:thin;border-bottom-style:groove">
+            <p style="color:black">{{col.name}}</p>
+        </div>
+      </a>
+    </div>
   </div>
-</div>
-  <!-- <div ng-repeat="ac in articles" >
-    <div class="row" style="background-color: rgb(163, 163, 184);">
-          <header class="twelve columns text-right">
-                <h5 style="floet:right;">{{ac.category}}</h5>
-            </header>
-   </div>
-
-    <div ng-repeat="a in ac.art" class="row">
-            <a href="#articles/{{a.articleId}}">
-            <div class="small-4 columns">
-                    <img  class="th [radius]" ng-src="{{a.imageUrl}}" >
-            </div>
-            <div class="main small-8 columns text-justify">
-                <p style="font-weight:bold;">{{a.title}}</p>
-            </div>
-            </a>
-    </div>
-
-    <div class="row" style="background-color: rgb(143, 143, 184);border-bottom-width:1px; border-bottom-style:dashed;">
-            <footer class="twelve columns">
-                <a href="#articles/category/{{ac.art[0].categoryId}}" >
-                  <span>More...</span>
-                </a>
-            </footer>
-    </div>
-</div> -->
 </div>

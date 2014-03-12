@@ -24,12 +24,64 @@ autoServices.factory('NavServices', ['$rootScope',
     }
 ]);
 
+autoServices.factory('CatalogServices', ['$routeParams',
+    function($routeParams) {
+        var msgService = {};
+        msgService.manufactureId = '';
+        msgService.modelId = '';
+        msgService.newOrUsed = '';
+
+        msgService.setManufacturerId = function(id) {
+            msgService.manufactureId = id;
+        };
+
+        msgService.getManufacturerId = function() {
+            if ($routeParams.isSelected) {
+                return msgService.manufactureId;
+            }
+            return 0;
+        };
+
+        msgService.setModelId = function(id) {
+            msgService.modelId = id;
+        };
+
+        msgService.getModelId = function() {
+            if ($routeParams.isSelected) {
+                return msgService.modelId;
+            }
+            return 0;
+        };
+
+        msgService.setNewOrUsed = function(id) {
+            msgService.newOrUsed = id;
+        };
+
+        msgService.getNewOrUsed = function() {
+            if ($routeParams.isSelected) {
+                return msgService.newOrUsed;
+            }
+            return 0;
+        };
+
+        return msgService;
+    }
+]);
+
 autoServices.factory('ManufacturersServices', ['$http',
     function($http) {
         var resourcemf = {};
 
         resourcemf.getAllManufacturers = function() {
             return $http.get('manufacturers.json', {
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            });
+        };
+
+        resourcemf.getAllModelsByManufacturerId = function(mId) {
+            return $http.get('manufacturers/' + mId + '/models.json', {
                 headers: {
                     'Content-type': 'application/json'
                 }
