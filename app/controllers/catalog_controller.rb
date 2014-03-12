@@ -1,22 +1,10 @@
 class CatalogController < ApplicationController
   HOST = 'http://m.auto.co.il/autoAPI.svc'
-  respond_to :json, :html
+  respond_to :json
 
   def index
-     respond_to do |format|
-
-        format.html {
-
-        }
-
-        format.json{
-          respond_with Net::HTTP.get URI.parse(HOST + "/manufacturers") unless params[:id]
-          respond_with Net::HTTP.get URI.parse(HOST + "/manufacturers/" + params[:id]) if params[:id]
-        }
-
-
-     end
-
+    respond_with Net::HTTP.get URI.parse(HOST + "/manufacturers") unless params[:id]
+    respond_with Net::HTTP.get URI.parse(HOST + "/manufacturers/" + params[:id]) if params[:id]
   end
 
   # def show
