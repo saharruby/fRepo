@@ -1,5 +1,5 @@
 AutoApp::Application.routes.draw do
-  get "home" => "home#index"
+  # get "home" => "home#index"
 
   get "articles" => "articles#index"
 
