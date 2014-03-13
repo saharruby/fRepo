@@ -72,8 +72,10 @@ autoServices.factory('CatalogServices', ['$routeParams',
 
         msgService.getModelId = function() {
             if ($routeParams.isSelected) {
-                return msgService.modelId;
-            }
+                if (msgService.model.id)
+                    return msgService.model.id;
+                return msgService.model.model_id;
+            };
             return 0;
         };
 
@@ -144,7 +146,7 @@ autoServices.factory('SearchServices', ['$http',
             });
         };
 
-        // resource.getAllManufacturerModelsByManufacturerId = function(mId) {
+        // resource.getSearchModelsByModelId = function(mId) {
         //     return $http.get('manufacturers/' + mId + '/models.json', {
         //         headers: {
         //             'Content-type': 'application/json'
