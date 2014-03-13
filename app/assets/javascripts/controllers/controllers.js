@@ -73,8 +73,9 @@ autoControllers.controller('ManufacturersCtrl', ['$scope', 'ManufacturersService
             });
         });
 
-        $scope.onSelectMF = function(id) {
-            CatalogServices.setManufacturerId(id);
+        $scope.onSelectMF = function(manufacturer) {
+            CatalogServices.setManufacturerId(manufacturer.id);
+            CatalogServices.setManufacturer(manufacturer);
         };
     }
 ]);
@@ -98,27 +99,63 @@ autoControllers.controller('ModelsCtrl', ['$scope', 'ManufacturersServices', 'Ca
             });
         });
 
-        $scope.onSelectM = function(id) {
-            CatalogServices.setModelId(id);
+        $scope.onSelectM = function(model) {
+            CatalogServices.setModelId(model.id);
+            CatalogServices.setModel(model);
             CatalogServices.setNewOrUsed($scope.newOrUsed);
+            console.log($scope.newOrUsed);
         };
     }
 ]);
 
 autoControllers.controller('CatalogCtrl', ['$scope', 'ManufacturersServices', 'CatalogServices',
     function($scope, ManufacturersServices, CatalogServices) {
+        $scope.manufacturer = {};
+        $scope.model = {};
+
         $scope.manufactureId = 0;
         $scope.modelId = 0;
 
-        $scope.$watch(CatalogServices.manufactureId, function(newData) {
-            $scope.manufactureId = CatalogServices.getManufacturerId();
-        });
+        $scope.newOrUsed = '';
+        $scope.searchUrl = '';
+        $scope.manufacturerName = '<  כל היצרנים';
+        $scope.modelName = '<  כל הדגמים';
 
-        $scope.$watch(CatalogServices.modelId, function(newData) {
-            $scope.modelId = CatalogServices.getModelId();
-        });
+        $scope.$watch(CatalogServices.manufacturer, function(newData) {
+            $scope.manufacturer = CatalogServices.getManufacturer();
+            if ($scope.manufacturer && $scope.manufacturer.name) {
+                $scope.manufactureId = $scope.manufacturer.id;
+                $scope.manufacturerName = '<  ' + $scope.manufacturer.name;
+                $scope.searchUrl = 'manufacturers/' + $scope.manufacturer.id + '?isSelected';
+            }
+        }, true);
+
+        $scope.$watch(CatalogServices.model, function(newData) {
+            $scope.model = CatalogServices.getModel();
+            if ($scope.model && $scope.model.name) {
+                $scope.modelId = $scope.model.id;
+                $scope.modelName = '<  ' + $scope.model.name;
+                $scope.searchUrl = 'manufacturers/' + $scope.manufacturer.id + '/' + $scope.model.id;
+                console.log($scope.newOrUsed);
+            }
+        }, true);
 
         console.log('From Catalog CTRL');
+    }
+]);
+
+autoControllers.controller('AllManufacturerModelsCtrl', ['$scope', 'SearchServices', 'CatalogServices',
+    function($scope, SearchServices, CatalogServices) {
+        $scope.test = "All_Manufacturer_Models_Ctrl";
+        $scope.manufacturer = CatalogServices.getManufacturer();
+
+        if ($scope.manufacturer && $scope.manufacturer.name) {
+            SearchServices.getSearchResaulForAllManufacturerModels($scope.manufacturer.id).success(function(data) {
+                $scope.models = data;
+                console.log(data);
+            });
+        }
+        console.log($scope.manufacturer);
     }
 ]);
 
