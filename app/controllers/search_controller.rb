@@ -3,10 +3,14 @@ class SearchController < ApplicationController
   respond_to :json
 
   def index
+    # used = %w[true false].include?(params[:used]) ? params[:used] : "false"
+    # respond_with Net::HTTP.get URI.parse(HOST + "/search?manufacturer=" + params[:id] + "/models?used=" + used) if params[:id] #unless params[:id]
     respond_with Net::HTTP.get URI.parse(HOST + "/search?manufacturer=" + params[:id]) if params[:id] #unless params[:id]
   end
 
   def home
-    respond_with Net::HTTP.get URI.parse(HOST + "/search?models/" + params[:id])  if params[:id]
+    # used = %w[true false].include?(params[:used]) ? params[:used] : "false"
+    # respond_with Net::HTTP.get URI.parse(HOST + "/models/" + params[:id]  + "?used=" + used)  if params[:id]
+    respond_with Net::HTTP.get URI.parse(HOST + "/models/" + params[:id] )  if params[:id]
   end
 end

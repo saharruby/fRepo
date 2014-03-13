@@ -28,9 +28,17 @@ autoModuleApp.config(['$routeProvider',
                 templateUrl: 'partials/allManufacturerModelsView.html',
                 controller: 'AllManufacturerModelsCtrl'
             })
+            .when('/articles/carcatalog/manufacturers/:id/models/:id', {
+                templateUrl: 'partials/carModelView.html',
+                controller: 'CarModelCtrl'
+            })
             .when('/articles/carcatalog/models', {
                 templateUrl: 'partials/modelsView.html',
                 controller: 'ModelsCtrl'
+            })
+            .when('/articles/carcatalog/models/:id', {
+                templateUrl: 'partials/carModelView.html',
+                controller: 'CarModelCtrl'
             })
             .when('/articles/:articleId', {
                 templateUrl: 'partials/article.html',
