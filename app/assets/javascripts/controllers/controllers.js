@@ -76,6 +76,7 @@ autoControllers.controller('ManufacturersCtrl', ['$scope', 'ManufacturersService
         $scope.onSelectMF = function(manufacturer) {
             CatalogServices.setManufacturerId(manufacturer.id);
             CatalogServices.setManufacturer(manufacturer);
+            CatalogServices.setModel({});
         };
     }
 ]);
@@ -84,7 +85,7 @@ autoControllers.controller('ModelsCtrl', ['$scope', 'ManufacturersServices', 'Ca
     function($scope, ManufacturersServices, CatalogServices) {
         $scope.manufacturerId = CatalogServices.getManufacturerId();
         $scope.models = {};
-        $scope.newOrUsed = 'new';
+        $scope.newOrUsed = 'true';
 
         ManufacturersServices.getAllModelsByManufacturerId($scope.manufacturerId).success(function(data) {
             console.log(data);
@@ -102,8 +103,9 @@ autoControllers.controller('ModelsCtrl', ['$scope', 'ManufacturersServices', 'Ca
         $scope.onSelectM = function(model) {
             CatalogServices.setModelId(model.id);
             CatalogServices.setModel(model);
-            CatalogServices.setNewOrUsed($scope.newOrUsed);
-            console.log($scope.newOrUsed);
+            //CatalogServices.setNewOrUsed($scope.newOrUsed);
+            //console.log($scope.newOrUsed);
+            console.log(model.id);
         };
     }
 ]);
@@ -135,7 +137,7 @@ autoControllers.controller('CatalogCtrl', ['$scope', 'ManufacturersServices', 'C
             if ($scope.model && $scope.model.name) {
                 $scope.modelId = $scope.model.id;
                 $scope.modelName = '<  ' + $scope.model.name;
-                $scope.searchUrl = 'manufacturers/' + $scope.manufacturer.id + '/' + $scope.model.id;
+                $scope.searchUrl = 'manufacturers/' + $scope.manufacturer.id + '/models/' + $scope.model.id + '?isSelected';
                 console.log($scope.newOrUsed);
             }
         }, true);
@@ -148,14 +150,43 @@ autoControllers.controller('AllManufacturerModelsCtrl', ['$scope', 'SearchServic
     function($scope, SearchServices, CatalogServices) {
         $scope.test = "All_Manufacturer_Models_Ctrl";
         $scope.manufacturer = CatalogServices.getManufacturer();
+        $scope.newOrUsed = CatalogServices.getNewOrUsed();
+        console.log($scope.newOrUsed);
 
         if ($scope.manufacturer && $scope.manufacturer.name) {
+            // SearchServices.getSearchResaulForAllManufacturerModels($scope.manufacturer.id + '?used=' + $scope.newOrUsed).success(function(data) {
             SearchServices.getSearchResaulForAllManufacturerModels($scope.manufacturer.id).success(function(data) {
                 $scope.models = data;
                 console.log(data);
             });
         }
-        console.log($scope.manufacturer);
+
+        $scope.setModelId = function(model) {
+            CatalogServices.setModel(model);
+            console.log("AllManufacturerModelsCtrl: model id : " + model.model_id);
+        };
+
+        console.log("All_Manufacturer_Models_Ctrl");
+    }
+]);
+
+autoControllers.controller('CarModelCtrl', ['$scope', 'SearchServices', 'CatalogServices',
+    function($scope, SearchServices, CatalogServices) {
+        $scope.modelId = CatalogServices.getModelId();
+        //$scope.newOrUsed = CatalogServices.getNewOrUsed();
+        console.log("model id : " + $scope.modelId);
+        //console.log($scope.newOrUsed);
+
+        if ($scope.modelId > 0) {
+            // SearchServices.getSearchResaulForModelByModelId($scope.modelId + '?used=' + $scope.newOrUsed).success(function(data) {
+            SearchServices.getSearchResaulForModelByModelId($scope.modelId).success(function(data) {
+                $scope.model = data[0];
+                console.log(data[0]);
+                console.log(data);
+            });
+        }
+
+        console.log("Car_Model_Ctrl");
     }
 ]);
 

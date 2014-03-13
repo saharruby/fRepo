@@ -60,12 +60,12 @@ autoDirectives.directive('catalog',
             },
             link: function(scope, element) {
                 scope.$watch('manufactureselected', function(value) {
-                    scope.modelflag = (value == 0 ? true : false);
+                    scope.modelflag = (value == 0 ? true : false);;
                     console.log("watch : " + value);
                 });
 
                 scope.$watch('modelselected', function(value) {
-                    scope.continueflag = (value == 0 ? true : false);
+                    scope.continueflag = (value == 0 ? true : false);;
                     console.log("watch : " + value);
                 });
 
