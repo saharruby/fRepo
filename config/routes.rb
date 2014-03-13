@@ -9,6 +9,10 @@ AutoApp::Application.routes.draw do
 
   get "manufacturers/:id/models" => "catalog#index"
 
+  get "manufacturer/:id" => "search#index"
+
+  get "models/:id" => "search#home"
+
   root to: "home#main"
 
   # The priority is based upon order of creation:

@@ -1,0 +1,13 @@
+<div ng-controller="AllManufacturerModelsCtrl" class="container">
+    <div ng-repeat="m in models" class="row" style="border-bottom-color:light-black;border-bottom-width:thin;border-bottom-style:groove">
+            <a href="#models/{{m.model_Id}}" >
+            <div class="small-4 columns">
+                    <img  class="th [radius]" ng-src="{{m.image_url}}" >
+            </div>
+            <div class="main small-8 columns text-justify">
+                <div style="font-weight:bold;float:right;margin-bottom:30px;margin-top: 10px;">{{m.name}}</div>
+                <div style="font-weight:thin;font-size:smaller;float:left;clear: both;margin-left:-5px" texthtmlparser texthtml="{{m.price}}"></div>
+            </div>
+            </a>
+    </div>
+</div>

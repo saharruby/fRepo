@@ -28,11 +28,24 @@ autoServices.factory('CatalogServices', ['$routeParams',
     function($routeParams) {
         var msgService = {};
         msgService.manufactureId = '';
+        msgService.manufacturer = {};
         msgService.modelId = '';
+        msgService.model = {};
         msgService.newOrUsed = '';
 
         msgService.setManufacturerId = function(id) {
             msgService.manufactureId = id;
+        };
+
+        msgService.setManufacturer = function(manufacturer) {
+            msgService.manufacturer = manufacturer;
+        };
+
+        msgService.getManufacturer = function() {
+            if ($routeParams.isSelected) {
+                return msgService.manufacturer;
+            }
+            return null;
         };
 
         msgService.getManufacturerId = function() {
@@ -44,6 +57,17 @@ autoServices.factory('CatalogServices', ['$routeParams',
 
         msgService.setModelId = function(id) {
             msgService.modelId = id;
+        };
+
+        msgService.setModel = function(model) {
+            msgService.model = model;
+        };
+
+        msgService.getModel = function() {
+            if ($routeParams.isSelected) {
+                return msgService.model;
+            }
+            return null;
         };
 
         msgService.getModelId = function() {
@@ -88,10 +112,49 @@ autoServices.factory('ManufacturersServices', ['$http',
             });
         };
 
+        resourcemf.getAllManufacturerModelsByManufacturerId = function(mId) {
+            return $http.get('manufacturers/' + mId + '/models.json', {
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            });
+        };
+
         return resourcemf;
     }
 ]);
 
+autoServices.factory('SearchServices', ['$http',
+    function($http) {
+        var resource = {};
+
+        resource.getSearchResaulForAllManufacturerModels = function(manufacturerId) {
+            return $http.get('manufacturer/' + manufacturerId + '.json', {
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            });
+        };
+
+        resource.getSearchResaulForModelByModelId = function(modelId) {
+            return $http.get('models/' + modelId + '.json', {
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            });
+        };
+
+        // resource.getAllManufacturerModelsByManufacturerId = function(mId) {
+        //     return $http.get('manufacturers/' + mId + '/models.json', {
+        //         headers: {
+        //             'Content-type': 'application/json'
+        //         }
+        //     });
+        // };
+
+        return resource;
+    }
+]);
 
 autoServices.factory('ArticlesServices', ['$http',
     function($http) {
