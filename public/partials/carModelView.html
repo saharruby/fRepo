@@ -1,17 +1,50 @@
 <div ng-controller="CarModelCtrl" class="container">
- <div class="row" >
-      <header class="twelve columns text-right" style="background-color: rgba(110, 110, 100, 0.3);position:absolute;display:block">
-            <h5 style="floet:right;color:white;font-weight:bold;">{{model.name}}</h5>
-      </header>
-      <img src="{{model.image_url}}" style="height: 240px;width:100%">
-   </div>
+  <div class="row" >
+    <header class="twelve columns text-right" style="background-color: rgba(110, 110, 100, 0.3);position:absolute;display:block">
+          <h5 style="floet:right;color:white;font-weight:bold;">{{model.name}}</h5>
+    </header>
+    <img src="{{model.image_url}}" style="height: 240px;width:100%">
+  </div>
   <div class="row">
-          <header class="twelve columns text-right">
-                <h3 style="floet:right;font-weight:bold;">{{model.price}}</h3>
-            </header>
-   </div>
-<div class="row">
-      <div class="twelve columns text-right">
-      </div>
-</div>
+    <header class="small-6 columns text-right">
+      <h4>:קטגוריה</h4>
+    </header>
+    <header class="small-6 columns">
+      <h4>{{model.category}}</h4>
+    </header>
+  </div>
+  <div class="row">
+    <header class="small-6 columns text-right">
+      <h4>:מחיר</h4>
+    </header>
+    <header class="small-6 columns">
+      <h4 >{{model.price}}</h4>
+    </header>
+  </div>
+  <div class="row">
+    <div class="twelve columns text-center">
+      <a href="#" class="button large expand">יעוץ חינם על אודי A3</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="twelve columns text-center">
+      <a href="#" class="button large expand">הוספה למועדפים"</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="twelve columns text-right">
+      <textarea class="text-right" disabled="disabled" placeholder="small-12.columns">{{model.review.summary}}</textarea>
+    </div>
+  </div>
+  <div class="row">
+    <ul class="pricing-table">
+      <li ng-repeat="td in tableData" class="row bullet-item">
+        <a href="{{td.link}}">
+          <div class="expand text-right">
+              <p style="color:black">{{td.title}}</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
