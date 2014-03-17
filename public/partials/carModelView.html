@@ -1,9 +1,9 @@
 <div ng-controller="CarModelCtrl" class="container">
   <div class="row" >
-    <header class="twelve columns text-right" style="background-color: rgba(110, 110, 100, 0.3);position:absolute;display:block">
-          <h5 style="floet:right;color:white;font-weight:bold;">{{model.name}}</h5>
+    <header class="twelve columns text-right image-header">
+          <h5>{{model.name}}</h5>
     </header>
-    <img src="{{model.image_url}}" style="height: 240px;width:100%">
+    <img src="{{model.image_url}}" class="image-magazine">
   </div>
   <div class="row">
     <header class="small-6 columns text-right">
@@ -22,13 +22,21 @@
     </header>
   </div>
   <div class="row">
+    <header class="small-6 columns text-right">
+      <h4>:מבחני ריסוק</h4>
+    </header>
+    <header class="small-6 columns">
+      <h4 startsimage starstext="{{model.safetyStars}}"></h4>
+    </header>
+  </div>
+  <div class="row">
     <div class="twelve columns text-center">
-      <a href="#" class="button large expand">יעוץ חינם על אודי A3</a>
+      <a href="#" class="button radius round secondary success large expand">יעוץ חינם על {{model.name}}</a>
     </div>
   </div>
   <div class="row">
     <div class="twelve columns text-center">
-      <a href="#" class="button large expand">הוספה למועדפים"</a>
+      <a href="#" class="button radius round secondary success large expand">הוספה למועדפים</a>
     </div>
   </div>
   <div class="row">
@@ -40,7 +48,7 @@
     <ul class="pricing-table">
       <li ng-repeat="td in tableData" class="row bullet-item">
         <a href="{{td.link}}">
-          <div class="expand text-right">
+          <div class=" text-right">
               <p style="color:black">{{td.title}}</p>
           </div>
         </a>

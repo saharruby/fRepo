@@ -30,6 +30,10 @@ angular.module("main")
                     templateUrl: 'partials/carModelView.html',
                     controller: 'CarModelCtrl'
                 })
+                .when('/carcatalog/model/review', {
+                    templateUrl: 'partials/modelReviewView.html',
+                    controller: 'CarModelCtrl'
+                })
                 .when('/articles/:articleId', {
                     templateUrl: 'partials/articleView.html',
                     controller: 'ArticleCtrl'
