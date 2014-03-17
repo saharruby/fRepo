@@ -1,0 +1,9 @@
+<div ng-controller="CarModelCtrl" class="container">
+  <br/>
+  <div class="row" ng-repeat="rev in review">
+    <header class="small-12 columns text-right">
+      <h4>{{rev.title}}</h4>
+    </header>
+    <p class="small-12 columns text-right" texthtmlparser texthtml="{{rev.content}}"></p>
+  </div>
+</div>

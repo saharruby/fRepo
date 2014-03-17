@@ -5,6 +5,22 @@
   width: 150px;
 }
 
+.image-header{
+  background-color: rgba(110, 110, 100, 0.3);
+  position:absolute;
+  display:block;
+}
+
+.image-header > h5 {
+  color:white;
+  font-weight:bold;
+}
+
+.image-magazine{
+  height: 240px;
+  width:100%;
+}
+
 /*
  * CSS TOGGLE SWITCHES
  * Unlicense
