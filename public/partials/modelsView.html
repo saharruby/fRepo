@@ -1,28 +1,20 @@
 <div ng-controller="ModelsCtrl" class="container">
-  <div class="row" style="">
-    <header class="twelve columns text-center" style="width:100%">
-       <div class="switch-toggle panel" style="margin-bottom: 0px">
-        <input id="month" name="view" type="radio" value="false" ng-model="newOrUsed">
-        <label for="month" style="font-weight:bold;font-size:large">משומש</label>
-        <input id="week" name="view" type="radio" value="true" ng-model="newOrUsed" checked>
-        <label for="week" style="font-weight:bold;font-size:large">חדש</label>
-        <a class="button round"></a>
-      </div>
-    </header>
+  <div class="row">
+    <ul class="button-group radius round  twelve columns">
+    <li><a href="#" class=" button secondary new-used ">חדש</a></li>
+    <li><a href="#" class=" button secondary new-used">משומש</a></li>
+  </ul>
   </div>
+  <ul class="pricing-table">
   <div ng-repeat="m in models" >
-    <div class="row" style="background-color: rgb(163, 163, 184);box-shadow: 1px 2px 0.5px #888888;">
-      <header class="twelve columns text-right">
-        <h5 style="font-weight:bold;font-size:x-large;">{{m.key}}</h5>
-      </header>
+      <li class="title">{{m.key}}</li>
+      <li ng-repeat="col in m.collection" class="row bullet-item">
+        <a href="#articles/carcatalog?isSelected" ng-click="onSelectM(col)">
+          <div class="expand text-right">
+              <p>{{col.name}}</p>
+          </div>
+        </a>
+    </li>
     </div>
-
-    <div ng-repeat="col in m.collection" class="row">
-      <a href="#articles/carcatalog?isSelected" ng-click="onSelectM(col)">
-        <div class="main small-12 columns text-right" style="border-bottom-color:light-black;border-bottom-width:thin;border-bottom-style:groove">
-            <p style="color:black">{{col.name}}</p>
-        </div>
-      </a>
-    </div>
-  </div>
+  </ul>
 </div>
