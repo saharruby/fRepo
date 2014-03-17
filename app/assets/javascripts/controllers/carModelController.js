@@ -6,7 +6,7 @@ angular.module('autoControllers')
                 link: '#/carcatalog/model/review?isSelected'
             }, {
                 title: 'גרסאות',
-                link: '#'
+                link: '#/carcatalog/model/versions?isSelected'
             }, {
                 title: 'תמונות גלריה',
                 link: '#'

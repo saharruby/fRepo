@@ -13,6 +13,8 @@ AutoApp::Application.routes.draw do
 
   get "models/:id" => "search#home"
 
+  get "models/:id/versions" => "catalog#version"
+
   root to: "home#main"
 
   # The priority is based upon order of creation:

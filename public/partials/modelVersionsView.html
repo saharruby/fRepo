@@ -1,0 +1,13 @@
+<div ng-controller="ModelVersionsCtrl" class="container">
+  <div class="row">
+    <ul class="pricing-table">
+      <li ng-repeat="ver in versions" class="row bullet-item">
+        <a href="{{ver.link}}">
+          <div class="text-right black">
+              <p>{{ver.name}}</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
