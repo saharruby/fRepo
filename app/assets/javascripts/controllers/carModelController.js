@@ -1,26 +1,6 @@
 angular.module('autoControllers')
     .controller('CarModelCtrl', ['$scope', 'SearchServices', 'CatalogServices',
         function($scope, SearchServices, CatalogServices) {
-            $scope.tableData = [{
-                title: 'חוות דעת מומחה',
-                link: '#/carcatalog/model/review?isSelected'
-            }, {
-                title: 'גרסאות',
-                link: '#/carcatalog/model/versions?isSelected'
-            }, {
-                title: 'תמונות גלריה',
-                link: '#'
-            }, {
-                title: 'וידאו',
-                link: '#'
-            }, {
-                title: 'מתחרים',
-                link: '#'
-            }, {
-                title: 'דגמי יד שניה',
-                link: '#'
-            }];
-
             $scope.modelId = CatalogServices.getModelId();
             $scope.review = [];
             //$scope.newOrUsed = CatalogServices.getNewOrUsed();
@@ -67,6 +47,26 @@ angular.module('autoControllers')
                         title: 'חסרונות',
                         content: data[0].review.disadvantages
                     });
+
+                    $scope.tableData = [{
+                        title: 'חוות דעת מומחה',
+                        link: '#/carcatalog/model/review?isSelected'
+                    }, {
+                        title: 'גרסאות',
+                        link: '#/carcatalog/model/versions?isSelected'
+                    }, {
+                        title: 'תמונות גלריה',
+                        link: '#/carcatalog/model/gallery?id=' + $scope.model.galleryId
+                    }, {
+                        title: 'וידאו',
+                        link: '#'
+                    }, {
+                        title: 'מתחרים',
+                        link: '#'
+                    }, {
+                        title: 'דגמי יד שניה',
+                        link: '#'
+                    }];
 
                     //console.log(data[0]);
                     console.log($scope.review);

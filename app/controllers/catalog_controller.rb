@@ -11,6 +11,10 @@ class CatalogController < ApplicationController
     respond_with Net::HTTP.get URI.parse(HOST + "/models/" + params[:id] + "/versions") if params[:id]
   end
 
+  def gallery
+    respond_with Net::HTTP.get URI.parse(HOST + "/galleries/" + params[:id]) if params[:id]
+  end
+
   # def show
   #    respond_with Net::HTTP.get URI.parse(HOST + "/articles/" + params[:id])
   # end

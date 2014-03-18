@@ -38,6 +38,10 @@ angular.module("main")
                     templateUrl: 'partials/modelVersionsView.html',
                     controller: 'ModelVersionsCtrl'
                 })
+                .when('/carcatalog/model/gallery', {
+                    templateUrl: 'partials/modelGalleryView.html',
+                    controller: 'ModelGalleryCtrl'
+                })
                 .when('/articles/:articleId', {
                     templateUrl: 'partials/articleView.html',
                     controller: 'ArticleCtrl'
@@ -51,3 +55,11 @@ angular.module("main")
                 });
         }
     ]);
+
+angular.module("main").run(function($rootScope, $timeout) {
+    $rootScope.$on('$routeChangeSuccess', function() {
+        // $timeout(function() {
+        $(document).foundation('reflow');
+        // }, 500);
+    });
+});
